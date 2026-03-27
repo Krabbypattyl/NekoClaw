@@ -276,6 +276,26 @@ WRAPPER
 chmod +x "$COPAW_BIN/copaw"
 info "Wrapper created at $COPAW_BIN/copaw"
 
+cat > "$COPAW_BIN/nekoclaw" << 'WRAPPER'
+#!/usr/bin/env bash
+# NekoClaw CLI wrapper — delegates to the uv-managed environment.
+set -euo pipefail
+
+COPAW_HOME="${COPAW_HOME:-$HOME/.copaw}"
+REAL_BIN="$COPAW_HOME/venv/bin/copaw"
+
+if [ ! -x "$REAL_BIN" ]; then
+    echo "Error: NekoClaw environment not found at $COPAW_HOME/venv" >&2
+    echo "Please reinstall: curl -fsSL <install-url> | bash" >&2
+    exit 1
+fi
+
+exec "$REAL_BIN" "$@"
+WRAPPER
+
+chmod +x "$COPAW_BIN/nekoclaw"
+info "Wrapper created at $COPAW_BIN/nekoclaw"
+
 # ── Step 5: Update PATH in shell profile ─────────────────────────────────────
 PATH_ENTRY="export PATH=\"\$HOME/.copaw/bin:\$PATH\""
 
@@ -332,8 +352,8 @@ fi
 
 echo "Then run:"
 echo ""
-printf "  ${BOLD}copaw init${RESET}       # first-time setup\n"
-printf "  ${BOLD}copaw app${RESET}        # start CoPaw\n"
+printf "  ${BOLD}nekoclaw init${RESET}   # first-time setup\n"
+printf "  ${BOLD}nekoclaw app${RESET}    # start NekoClaw\n"
 echo ""
 printf "To upgrade later, re-run this installer.\n"
-printf "To uninstall, run: ${BOLD}copaw uninstall${RESET}\n"
+printf "To uninstall, run: ${BOLD}nekoclaw uninstall${RESET}\n"

@@ -104,20 +104,20 @@ docker run -p 127.0.0.1:8088:8088 \
    - 下载最新版本：https://github.com/agentscope-ai/CoPaw/releases
    - 重新安装
 
-升级后重启服务 copaw app。
+升级后重启服务 `nekoclaw app`。
 
 ### CoPaw服务如何启动及初始化
 
 推荐使用默认配置快速初始化：
 
 ```bash
-copaw init --defaults
+nekoclaw init --defaults
 ```
 
 启动服务命令：
 
 ```bash
-copaw app
+nekoclaw app
 ```
 
 控制台默认地址为 `http://127.0.0.1:8088/`，使用默认配置快速初始化后，可以进入控制台快捷自定义相关内容。详情请见[快速开始](https://copaw.agentscope.io/docs/quickstart)。

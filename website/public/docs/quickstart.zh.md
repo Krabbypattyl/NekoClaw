@@ -102,7 +102,7 @@ bash install.sh --extras ollama      # Ollama（跨平台，需 Ollama 服务运
 .\install.ps1 -Extras ollama        # Ollama
 ```
 
-升级只需重新运行安装命令。卸载请运行 `copaw uninstall`。
+升级只需重新运行安装命令。卸载请运行 `nekoclaw uninstall`。
 
 ### 步骤二：初始化
 
@@ -110,21 +110,21 @@ bash install.sh --extras ollama      # Ollama（跨平台，需 Ollama 服务运
 
 - **快速用默认配置**（不交互，适合先跑起来再改配置）：
   ```bash
-  copaw init --defaults
+  nekoclaw init --defaults
   ```
 - **交互式初始化**（按提示填写心跳间隔、投递目标、活跃时段，并可顺带配置频道与 Skills）：
   ```bash
-  copaw init
+  nekoclaw init
   ```
   详见 [CLI - 快速上手](./cli#快速上手)。
 
-若已有配置想覆盖，可使用 `copaw init --force`（会提示确认）。
+若已有配置想覆盖，可使用 `nekoclaw init --force`（会提示确认）。
 初始化后若尚未启用频道，接入钉钉、飞书、QQ 等需在 [频道配置](./channels) 中按文档填写。
 
 ### 步骤三：启动服务
 
 ```bash
-copaw app
+nekoclaw app
 ```
 
 服务默认监听 `127.0.0.1:8088`。若已配置频道，CoPaw 会在对应 app 内回复；若尚未配置，也可先完成本节再前往频道配置。
@@ -148,7 +148,7 @@ pip install copaw
 
 ## 方式三：桌面应用（Beta）
 
-如果你不习惯使用命令行，可以下载并使用 CoPaw 的桌面应用版本，无需手动配置 Python 环境或执行命令。
+如果你不习惯使用命令行，可以下载并使用 NekoClaw 的桌面应用版本，无需手动配置 Python 环境或执行命令。
 
 ### 特点
 
@@ -162,13 +162,13 @@ pip install copaw
 1. **下载安装包**
    前往 [GitHub Releases](https://github.com/agentscope-ai/CoPaw/releases) 下载对应系统的版本：
 
-   - Windows: `CoPaw-Setup-<version>.exe`
-   - macOS: `CoPaw-<version>-macOS.zip`
+   - Windows: `NekoClaw-Setup-<version>.exe`
+   - macOS: `NekoClaw-<version>-macOS.zip`
 
 2. **安装并启动**
 
    - **Windows**: 双击 `.exe` 文件按向导安装，完成后双击桌面快捷方式启动
-   - **macOS**: 解压 `.zip` 得到 `CoPaw.app`，首次需右键选择"打开"以绕过系统安全限制
+   - **macOS**: 解压 `.zip` 得到 `NekoClaw.app`，首次需右键选择"打开"以绕过系统安全限制
 
 3. **首次启动提示**
    首次启动可能需要 10-60 秒（取决于系统配置），应用需要初始化 Python 环境和加载依赖，请耐心等待浏览器窗口自动打开。

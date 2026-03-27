@@ -1,6 +1,6 @@
 <div align="center">
 
-# CoPaw
+# NekoClaw
 
 [![GitHub Repo](https://img.shields.io/badge/GitHub-Repo-black.svg?logo=github)](https://github.com/agentscope-ai/CoPaw)
 [![PyPI](https://img.shields.io/pypi/v/copaw?color=3775A9&label=PyPI&logo=pypi)](https://pypi.org/project/copaw/)
@@ -19,7 +19,7 @@
 [[Documentation](https://copaw.agentscope.io/)] [[中文 README](README_zh.md)] [[日本語](README_ja.md)]
 
 <p align="center">
-  <img src="https://img.alicdn.com/imgextra/i2/O1CN014TIqyO1U5wDiSbFfA_!!6000000002467-2-tps-816-192.png" alt="CoPaw Logo" width="120">
+  <img src="https://img.alicdn.com/imgextra/i2/O1CN014TIqyO1U5wDiSbFfA_!!6000000002467-2-tps-816-192.png" alt="NekoClaw Logo" width="120">
 </p>
 
 <p align="center"><b>Works for you, grows with you.</b></p>
@@ -107,8 +107,8 @@ If you prefer managing Python yourself:
 
 ```bash
 pip install copaw
-copaw init --defaults
-copaw app
+nekoclaw init --defaults
+nekoclaw app
 ```
 
 Then open **http://127.0.0.1:8088/** in your browser for the Console (chat with CoPaw, configure the agent). To talk in DingTalk, Feishu, QQ, etc., add a channel in the [docs](https://copaw.agentscope.io/docs/channels).
@@ -177,8 +177,8 @@ irm https://copaw.agentscope.io/install.ps1 | iex
 Once installed, open a new terminal and run:
 
 ```bash
-copaw init --defaults   # or: copaw init (interactive)
-copaw app
+nekoclaw init --defaults   # or: nekoclaw init (interactive)
+nekoclaw app
 ```
 
 <details>
@@ -237,13 +237,13 @@ copaw uninstall --purge  # removes everything
 > - **Potential performance issues**: Startup time, memory usage, and other performance aspects may need further optimization
 > - **Features under development**: Some features may be unstable or missing
 
-If you're not comfortable with command-line tools, you can download and use CoPaw's desktop application without manually configuring Python environments or running commands.
+If you're not comfortable with command-line tools, you can download and use NekoClaw's desktop application without manually configuring Python environments or running commands.
 
 #### Download
 
 Download the desktop app from [GitHub Releases](https://github.com/agentscope-ai/CoPaw/releases):
-- **Windows**: `CoPaw-Setup-<version>.exe`
-- **macOS**: `CoPaw-<version>-macOS.zip` (Apple Silicon recommended)
+- **Windows**: `NekoClaw-Setup-<version>.exe`
+- **macOS**: `NekoClaw-<version>-macOS.zip` (Apple Silicon recommended)
 
 #### Features
 
@@ -258,17 +258,17 @@ Download the desktop app from [GitHub Releases](https://github.com/agentscope-ai
 
 #### macOS: Bypass System Security Restrictions
 
-When you download the CoPaw macOS app from Releases, macOS may show: *"Apple cannot verify that 'CoPaw' contains no malicious software"*. This happens because the app is not notarized. You can still open it as follows:
+When you download the NekoClaw macOS app from Releases, macOS may show: *"Apple cannot verify that 'NekoClaw' contains no malicious software"*. This happens because the app is not notarized. You can still open it as follows:
 
 - **Right-click to open (recommended)**
-  Right-click (or Control+click) the CoPaw app → **Open** → in the dialog click **Open** again. This tells Gatekeeper you trust the app; after that you can double-click to launch as usual.
+  Right-click (or Control+click) the NekoClaw app → **Open** → in the dialog click **Open** again. This tells Gatekeeper you trust the app; after that you can double-click to launch as usual.
 
 - **Allow in System Settings**
-  If it is still blocked, go to **System Settings → Privacy & Security**, scroll to the message like *"CoPaw was blocked because it is from an unidentified developer"*, and click **Open Anyway** or **Allow**.
+  If it is still blocked, go to **System Settings → Privacy & Security**, scroll to the message like *"NekoClaw was blocked because it is from an unidentified developer"*, and click **Open Anyway** or **Allow**.
 
 - **Remove quarantine attribute (not recommended for most users)**
   In Terminal run:
-  `xattr -cr /Applications/CoPaw.app`
+  `xattr -cr /Applications/NekoClaw.app`
   (or use the path to the `.app` after unzipping). This clears the "downloaded from the internet" quarantine flag so the warning usually does not appear, but is less safe and controllable than using **Right-click → Open**.
 
 For detailed usage instructions, troubleshooting, and common issues, see the [Desktop Application Guide](https://copaw.agentscope.io/docs/desktop).
@@ -459,9 +459,9 @@ pip install -e .
 
 ---
 
-## Why CoPaw?
+## Why NekoClaw?
 
-CoPaw represents both a **Co Personal Agent Workstation** and a "co-paw"—a partner always by your side. More than just a cold tool, CoPaw is a warm "little paw" always ready to lend a hand (or a paw!). It is the ultimate teammate for your digital life.
+NekoClaw combines **Neko** and **Claw** to evoke a nimble, dependable AI companion. More than just a cold tool, NekoClaw is a warm "little paw" that stays close, reacts quickly, and helps you get things done.
 
 ---
 

@@ -3,10 +3,7 @@ import { Link } from "react-router-dom";
 import {
   Menu,
   X,
-  BookOpen,
-  Github,
   Globe,
-  FileText,
   Download,
   ChevronDown,
 } from "lucide-react";
@@ -161,15 +158,6 @@ export function Nav({
                 }}
               >
                 <Link
-                  to="/release-notes"
-                  role="menuitem"
-                  className="nav-dropdown-item"
-                  onClick={() => setMoreOpen(false)}
-                >
-                  <FileText size={16} strokeWidth={1.5} aria-hidden />
-                  <span>{t(lang, "nav.releaseNotes")}</span>
-                </Link>
-                <Link
                   to={`${docsBase}/quickstart`}
                   role="menuitem"
                   className="nav-dropdown-item"
@@ -181,10 +169,6 @@ export function Nav({
               </div>
             )}
           </div>
-          <Link to={docsBase} className={linkClass}>
-            <BookOpen size={18} strokeWidth={1.5} aria-hidden />
-            <span>{t(lang, "nav.docs")}</span>
-          </Link>
           <button
             type="button"
             onClick={onLangClick}
@@ -199,16 +183,6 @@ export function Nav({
             <Globe size={18} strokeWidth={1.5} aria-hidden />
             <span>{t(lang, "nav.lang")}</span>
           </button>
-          <a
-            href="https://github.com/agentscope-ai/CoPaw"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={linkClass}
-            title="CoPaw on GitHub"
-          >
-            <Github size={18} strokeWidth={1.5} aria-hidden />
-            <span>{t(lang, "nav.github")}</span>
-          </a>
           <a
             href="https://agentscope.io/"
             target="_blank"
@@ -275,13 +249,6 @@ export function Nav({
         >
           <Download size={18} /> {t(lang, "nav.download")}
         </Link>
-        <Link
-          to={docsBase}
-          className={linkClass}
-          onClick={() => setOpen(false)}
-        >
-          <BookOpen size={18} /> {t(lang, "nav.docs")}
-        </Link>
         <button
           type="button"
           className={linkClass}
@@ -293,16 +260,6 @@ export function Nav({
         >
           <Globe size={18} /> {t(lang, "nav.lang")}
         </button>
-        <a
-          href="https://github.com/agentscope-ai/CoPaw"
-          target="_blank"
-          rel="noopener noreferrer"
-          className={linkClass}
-          onClick={() => setOpen(false)}
-          title="CoPaw on GitHub"
-        >
-          <Github size={18} /> {t(lang, "nav.github")}
-        </a>
         <a
           href="https://agentscope.io/"
           target="_blank"

@@ -858,7 +858,7 @@
     }
   },
   "login": {
-    "title": "CoPaw にログイン",
+    "title": "NekoClaw にログイン",
     "registerTitle": "アカウント作成",
     "firstUserHint": "管理者アカウントを作成して始めましょう",
     "usernamePlaceholder": "ユーザー名",
@@ -920,7 +920,7 @@
     "providerTypeLocalWhisperDesc": "ローカルにインストールされた openai-whisper Python ライブラリで文字起こしを実行します。ffmpeg と openai-whisper の両方のインストールが必要です。",
     "localWhisperReady": "ローカル Whisper は準備完了です。ffmpeg と openai-whisper がインストールされています。",
     "localWhisperMissing": "ローカル Whisper は準備ができていません。不足している依存関係をインストールしてください。",
-    "localWhisperMissingDesc": "ffmpeg: {{ffmpeg}} | openai-whisper: {{whisper}}。不足している依存関係をインストールしてください：ffmpeg（システムパッケージ）と openai-whisper（uv pip install openai-whisper、または CoPaw を [whisper] エクストラ付きでインストール）。",
+    "localWhisperMissingDesc": "ffmpeg: {{ffmpeg}} | openai-whisper: {{whisper}}。不足している依存関係をインストールしてください：ffmpeg（システムパッケージ）と openai-whisper（uv pip install openai-whisper、または NekoClaw を [whisper] エクストラ付きでインストール）。",
     "providerLabel": "Whisper API プロバイダー",
     "providerDescription": "Whisper API による音声文字起こしに使用するプロバイダーを選択します。Whisper 対応エンドポイントを持つプロバイダーのみ表示されます。",
     "providerPlaceholder": "プロバイダーを選択...",

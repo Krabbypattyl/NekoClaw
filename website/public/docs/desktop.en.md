@@ -38,7 +38,7 @@ This guide explains how to install and use the CoPaw Desktop application on Wind
 ### Installation Steps
 
 1. **Download the installer**
-   Download `CoPaw-Setup-<version>.exe` from the [Release page][releases]
+   Download `NekoClaw-Setup-<version>.exe` from the [Release page][releases]
 
 2. **Run the installer**
    Double-click the `.exe` file and follow the installation wizard
@@ -99,13 +99,13 @@ A:
 ### Installation Steps
 
 1. **Download the archive**
-   Download `CoPaw-<version>-macOS.zip` from the [Release page][releases]
+   Download `NekoClaw-<version>-macOS.zip` from the [Release page][releases]
 
 2. **Extract**
-   Double-click the `.zip` file to extract and get `CoPaw.app`
+   Double-click the `.zip` file to extract and get `NekoClaw.app`
 
 3. **Move to Applications folder (Optional)**
-   Drag `CoPaw.app` to the `/Applications` folder
+   Drag `NekoClaw.app` to the `/Applications` folder
 
 ### First Launch: Bypassing System Security Restrictions
 
@@ -127,7 +127,7 @@ CoPaw is **not Apple Developer-signed or notarized**, so macOS Gatekeeper will b
 
 #### Method 1: Right-click to open (Recommended)
 
-1. **Right-click** (or Control + click) on `CoPaw.app`
+1. **Right-click** (or Control + click) on `NekoClaw.app`
 2. Select **"Open"** from the menu
 3. In the dialog that appears, click the **"Open"** button again
 4. ✅ After this, you can double-click to launch normally without further prompts
@@ -146,7 +146,7 @@ If still blocked:
 
 ```bash
 # Remove download quarantine attribute
-xattr -cr /Applications/CoPaw.app
+xattr -cr /Applications/NekoClaw.app
 ```
 
 ⚠️ **Warning**: This method completely removes security checks; only use if you fully trust the application source.
@@ -164,7 +164,7 @@ When first launched, macOS may request the following permissions:
 
 #### Normal Launch (Double-click)
 
-- Double-click `CoPaw.app` to launch
+- Double-click `NekoClaw.app` to launch
 - The app runs in the background and opens a browser window
 - Logs are written to: `~/.copaw/desktop.log`
 
@@ -174,10 +174,10 @@ If the app crashes or you need to see detailed logs:
 
 ```bash
 # Navigate to the application directory
-cd /Applications  # or wherever your CoPaw.app is located
+cd /Applications  # or wherever your NekoClaw.app is located
 
 # Set environment variables and launch
-APP_ENV="$(pwd)/CoPaw.app/Contents/Resources/env"
+APP_ENV="$(pwd)/NekoClaw.app/Contents/Resources/env"
 PYTHONPATH= PYTHONHOME="$APP_ENV" "$APP_ENV/bin/python" -m copaw desktop
 ```
 
@@ -207,7 +207,7 @@ A:
 A: Follow the "Bypassing System Security Restrictions" steps above
 
 **Q: How to uninstall?**
-A: Drag `CoPaw.app` to the Trash, then delete the `~/.copaw` configuration folder
+A: Drag `NekoClaw.app` to the Trash, then delete the `~/.copaw` configuration folder
 
 **Q: Can I use it on Intel Mac?**
 A: Yes, but you cannot use MLX model acceleration (MLX only supports Apple Silicon)

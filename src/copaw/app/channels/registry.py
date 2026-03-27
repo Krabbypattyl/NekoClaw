@@ -17,6 +17,7 @@ if TYPE_CHECKING:
 logger = logging.getLogger(__name__)
 
 _BUILTIN_SPECS: dict[str, tuple[str, str]] = {
+    "neko": (".neko", "NekoChannel"),
     "imessage": (".imessage", "IMessageChannel"),
     "discord": (".discord_", "DiscordChannel"),
     "dingtalk": (".dingtalk", "DingTalkChannel"),

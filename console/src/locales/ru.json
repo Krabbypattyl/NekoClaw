@@ -863,7 +863,7 @@
     }
   },
   "login": {
-    "title": "Вход в CoPaw",
+    "title": "Вход в NekoClaw",
     "registerTitle": "Создание аккаунта",
     "firstUserHint": "Создайте учётную запись администратора для начала работы",
     "usernamePlaceholder": "Имя пользователя",
@@ -925,7 +925,7 @@
     "providerTypeLocalWhisperDesc": "Запускать транскрипцию локально с помощью библиотеки openai-whisper. Требуются ffmpeg и openai-whisper.",
     "localWhisperReady": "Локальный Whisper готов к работе. ffmpeg и openai-whisper установлены.",
     "localWhisperMissing": "Локальный Whisper не готов. Необходимо установить недостающие зависимости.",
-    "localWhisperMissingDesc": "ffmpeg: {{ffmpeg}} | openai-whisper: {{whisper}}. Установите недостающие зависимости: ffmpeg (системный пакет) и openai-whisper (uv pip install openai-whisper или установите CoPaw с опцией [whisper]).",
+    "localWhisperMissingDesc": "ffmpeg: {{ffmpeg}} | openai-whisper: {{whisper}}. Установите недостающие зависимости: ffmpeg (системный пакет) и openai-whisper (uv pip install openai-whisper или установите NekoClaw с опцией [whisper]).",
     "providerLabel": "Провайдер Whisper API",
     "providerDescription": "Выберите провайдера для транскрипции аудио через Whisper API. Отображаются только провайдеры с совместимым эндпоинтом.",
     "providerPlaceholder": "Выберите провайдера...",

@@ -107,20 +107,20 @@ docker run -p 127.0.0.1:8088:8088 \
    - Download the latest version from: https://github.com/agentscope-ai/CoPaw/releases
    - Reinstall
 
-After upgrading, restart the service with `copaw app`.
+After upgrading, restart the service with `nekoclaw app`.
 
 ### How to initialize and start CoPaw service
 
 Recommended quick initialization:
 
 ```bash
-copaw init --defaults
+nekoclaw init --defaults
 ```
 
 Start service:
 
 ```bash
-copaw app
+nekoclaw app
 ```
 
 The default Console URL is `http://127.0.0.1:8088/`. After quick init, you can

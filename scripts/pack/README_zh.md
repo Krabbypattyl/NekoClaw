@@ -1,4 +1,4 @@
-# CoPaw Desktop 打包脚本
+# NekoClaw Desktop 打包脚本
 
 一键打包：脚本会先运行 `scripts/wheel_build.sh` 构建 **wheel**
 （包含 console 前端产物），再用 **临时 conda 环境** + **conda-pack**
@@ -26,7 +26,7 @@
 **macOS**
 ```bash
 bash ./scripts/pack/build_macos.sh
-# 产出: dist/CoPaw.app
+# 产出: dist/NekoClaw.app
 
 CREATE_ZIP=1 bash ./scripts/pack/build_macos.sh   # 同时生成 .zip
 ```
@@ -34,7 +34,7 @@ CREATE_ZIP=1 bash ./scripts/pack/build_macos.sh   # 同时生成 .zip
 **Windows (PowerShell)**
 ```powershell
 ./scripts/pack/build_win.ps1
-# 产出: dist/CoPaw-Setup-<version>.exe
+# 产出: dist/NekoClaw-Setup-<version>.exe
 # 创建两个启动器：
 #   - CoPaw Desktop.vbs (静默启动，无终端窗口)
 #   - CoPaw Desktop (Debug).bat (显示终端，便于调试)
@@ -46,7 +46,7 @@ CREATE_ZIP=1 bash ./scripts/pack/build_macos.sh   # 同时生成 .zip
 
 ```bash
 # 在仓库根目录执行，强制只用打包环境（不用系统 conda / PYTHONPATH）。路径按需改。
-APP_ENV="$(pwd)/dist/CoPaw.app/Contents/Resources/env"
+APP_ENV="$(pwd)/dist/NekoClaw.app/Contents/Resources/env"
 PYTHONPATH= PYTHONHOME="$APP_ENV" "$APP_ENV/bin/python" -m copaw desktop
 ```
 
@@ -58,16 +58,16 @@ PYTHONPATH= PYTHONHOME="$APP_ENV" "$APP_ENV/bin/python" -m copaw desktop
 
 ## macOS：提示「无法验证开发者」/ Gatekeeper 拦截时怎么打开
 
-用户从 Release 等渠道下载的 CoPaw macOS 应用（zip 内的 .app）未经过 Apple 公证，可能看到「Apple 无法验证“CoPaw”是否包含可能危害 Mac 安全或泄漏隐私的恶意软件」。可按以下方式打开：
+用户从 Release 等渠道下载的 NekoClaw macOS 应用（zip 内的 .app）未经过 Apple 公证，可能看到「Apple 无法验证“NekoClaw”是否包含可能危害 Mac 安全或泄漏隐私的恶意软件」。可按以下方式打开：
 
 - **右键打开（推荐）**
-  在 CoPaw 应用上 **右键（或 Control + 点击）** → 选 **「打开」** → 在弹窗里再点一次 **「打开」**。即表示你确认运行该应用，Gatekeeper 会放行，之后双击即可正常打开。
+  在 NekoClaw 应用上 **右键（或 Control + 点击）** → 选 **「打开」** → 在弹窗里再点一次 **「打开」**。即表示你确认运行该应用，Gatekeeper 会放行，之后双击即可正常打开。
 
 - **在系统设置里放行**
-  若仍被拦截，进入 **系统设置 → 隐私与安全性**，往下找到类似「已阻止使用 CoPaw，因为无法验证开发者」的提示，点 **「仍要打开」** 或 **「允许」** 即可。
+  若仍被拦截，进入 **系统设置 → 隐私与安全性**，往下找到类似「已阻止使用 NekoClaw，因为无法验证开发者」的提示，点 **「仍要打开」** 或 **「允许」** 即可。
 
 - **用终端去掉隔离属性（不推荐普通用户）**
-  在终端执行：`xattr -cr /Applications/CoPaw.app`（或解压后 .app 的实际路径）。会去掉「从互联网下载」的隔离标记，一般就不再弹恶意软件提示，但不如「右键 → 打开」安全、可控。
+  在终端执行：`xattr -cr /Applications/NekoClaw.app`（或解压后 .app 的实际路径）。会去掉「从互联网下载」的隔离标记，一般就不再弹恶意软件提示，但不如「右键 → 打开」安全、可控。
 
 ## CI
 
@@ -83,7 +83,7 @@ PYTHONPATH= PYTHONHOME="$APP_ENV" "$APP_ENV/bin/python" -m copaw desktop
 | 文件 | 说明 |
 |------|------|
 | `build_common.py` | 创建临时 conda 环境，从 wheel 安装 `copaw[full]`，conda-pack 产出归档 |
-| `build_macos.sh` | 一键：构建 wheel → build_common → 解压到 CoPaw.app；可选打 zip |
+| `build_macos.sh` | 一键：构建 wheel → build_common → 解压到 NekoClaw.app；可选打 zip |
 | `build_win.ps1` | 一键：构建 wheel → build_common → 解压 → 创建 VBS/BAT 启动器 → makensis 安装包 |
 | `copaw_desktop.nsi` | NSIS 脚本：打包 `dist/win-unpacked`，添加图标，创建快捷方式 |
 | `assets/icon.ico` | 预生成的 Windows 图标（安装包和快捷方式使用） |

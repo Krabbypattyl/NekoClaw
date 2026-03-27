@@ -206,8 +206,8 @@ export default function Sidebar({ selectedKey }: SidebarProps) {
     fetch(url, { cache: "no-cache" })
       .then((res) => (res.ok ? res.text() : Promise.reject()))
       .then((text) => {
-        const zhPattern = /###\s*CoPaw如何更新[\s\S]*?(?=\n###|$)/;
-        const enPattern = /###\s*How to update CoPaw[\s\S]*?(?=\n###|$)/;
+        const zhPattern = /###\s*NekoClaw如何更新[\s\S]*?(?=\n###|$)/;
+        const enPattern = /###\s*How to update NekoClaw[\s\S]*?(?=\n###|$)/;
         const match = text.match(faqLang === "zh" ? zhPattern : enPattern);
         setUpdateMarkdown(
           match && lang !== "ru"
@@ -378,12 +378,8 @@ export default function Sidebar({ selectedKey }: SidebarProps) {
         {!collapsed && (
           <div className={styles.logoWrapper}>
             <img
-              src={
-                isDark
-                  ? `${import.meta.env.BASE_URL}dark-logo.png`
-                  : `${import.meta.env.BASE_URL}logo.png`
-              }
-              alt="CoPaw"
+              src={`${import.meta.env.BASE_URL}logo.png`}
+              alt="NekoClaw"
               className={styles.logoImg}
             />
             {version && (

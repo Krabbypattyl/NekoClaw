@@ -45,16 +45,88 @@ def _normalize_working_dir_bound_paths(data: object) -> object:
     Only rewrites known working-dir-bound keys.
     """
     legacy_root_tilde = "~/.copaw"
-    legacy_root_abs = str(Path(legacy_root_tilde).expanduser().resolve())
-    new_root_abs = str(WORKING_DIR)
+    legacy_root = Path(legacy_root_tilde).expanduser().resolve()
+    new_root = WORKING_DIR
+    legacy_root_abs = str(legacy_root)
+    new_root_abs = str(new_root)
+
+    def _starts_with_path_prefix(value: str, prefix: str) -> bool:
+        """Return True when value == prefix or is inside prefix/."""
+        return value == prefix or value.startswith(prefix + "/")
+
+    def _rewrite_absolute_path_root(value: str) -> str | None:
+        """Rewrite only when value is truly under the legacy root path.
+
+        This avoids false matches like ``/Users/x/.copaw-dev`` being treated
+        as a child of ``/Users/x/.copaw`` just because of a string prefix.
+        """
+        try:
+            path = Path(value).expanduser()
+        except (TypeError, ValueError):
+            return None
+        if not path.is_absolute():
+            return None
+        try:
+            relative = path.relative_to(legacy_root)
+        except ValueError:
+            return None
+        return str(new_root / relative)
+
+    def _collapse_repeated_custom_root(value: str) -> str | None:
+        """Repair accidental repeated custom suffixes like '.copaw-dev-dev'.
+
+        This only applies when the current working dir is a customized variant
+        of the legacy root (e.g. ``~/.copaw-dev``).
+        """
+        try:
+            path = Path(value).expanduser()
+        except (TypeError, ValueError):
+            return None
+        if not path.is_absolute():
+            return None
+
+        legacy_name = legacy_root.name
+        current_name = new_root.name
+        if not current_name.startswith(legacy_name):
+            return None
+        suffix = current_name[len(legacy_name) :]
+        if not suffix:
+            return None
+
+        try:
+            relative_to_parent = path.relative_to(new_root.parent)
+        except ValueError:
+            return None
+
+        parts = relative_to_parent.parts
+        if not parts:
+            return None
+
+        root_name = parts[0]
+        if root_name == current_name:
+            return None
+
+        expected = legacy_name
+        while len(expected) < len(root_name):
+            expected += suffix
+
+        if expected != root_name or root_name == current_name:
+            return None
+
+        remainder = Path(*parts[1:]) if len(parts) > 1 else Path()
+        return str(new_root / remainder)
 
     def _rewrite_path_value(v: object) -> object:
         if not isinstance(v, str) or not v:
             return v
-        if v.startswith(legacy_root_tilde):
+        if _starts_with_path_prefix(v, legacy_root_tilde):
             return new_root_abs + v[len(legacy_root_tilde) :]
-        if v.startswith(legacy_root_abs):
-            return new_root_abs + v[len(legacy_root_abs) :]
+        rewritten = _rewrite_absolute_path_root(v)
+        if rewritten is not None:
+            return rewritten
+        repaired = _collapse_repeated_custom_root(v)
+        if repaired is not None:
+            return repaired
         return v
 
     def _walk(obj: object, key: str | None = None) -> object:

@@ -27,6 +27,7 @@ from ...config.config import (
     IMessageChannelConfig,
     MatrixConfig,
     MattermostConfig,
+    NekoConfig,
     MQTTConfig,
     QQConfig,
     SkillScannerConfig,
@@ -42,6 +43,7 @@ router = APIRouter(prefix="/config", tags=["config"])
 
 
 _CHANNEL_CONFIG_CLASS_MAP = {
+    "neko": NekoConfig,
     "telegram": TelegramConfig,
     "dingtalk": DingTalkConfig,
     "discord": DiscordConfig,

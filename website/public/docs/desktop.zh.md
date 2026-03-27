@@ -1,4 +1,4 @@
-# CoPaw Desktop 桌面应用版使用指南
+# NekoClaw Desktop 桌面应用版使用指南
 
 > ⚠️ **Beta 版本说明**
 >
@@ -12,7 +12,7 @@
 
 **下载地址**：[GitHub Releases][releases]
 
-本文档说明如何在 Windows 和 macOS 系统上安装和使用 CoPaw Desktop 桌面应用。
+本文档说明如何在 Windows 和 macOS 系统上安装和使用 NekoClaw Desktop 桌面应用。
 
 [releases]: https://github.com/agentscope-ai/CoPaw/releases
 
@@ -38,7 +38,7 @@
 ### 安装步骤
 
 1. **下载安装包**
-   从 [Release 页面][releases]下载 `CoPaw-Setup-<version>.exe` 文件
+   从 [Release 页面][releases]下载 `NekoClaw-Setup-<version>.exe` 文件
 
 2. **运行安装程序**
    双击 `.exe` 文件，按照安装向导提示完成安装
@@ -99,13 +99,13 @@ A:
 ### 安装步骤
 
 1. **下载压缩包**
-   从 [Release 页面][releases]下载 `CoPaw-<version>-macOS.zip` 文件
+   从 [Release 页面][releases]下载 `NekoClaw-<version>-macOS.zip` 文件
 
 2. **解压缩**
-   双击 `.zip` 文件自动解压，得到 `CoPaw.app` 应用
+   双击 `.zip` 文件自动解压，得到 `NekoClaw.app` 应用
 
 3. **移动到应用程序文件夹 (可选)**
-   将 `CoPaw.app` 拖到 `/Applications` 文件夹
+   将 `NekoClaw.app` 拖到 `/Applications` 文件夹
 
 ### 首次启动：解除系统安全限制
 
@@ -127,7 +127,7 @@ CoPaw 应用**未经过 Apple 开发者签名和公证（Notarization）**，mac
 
 #### 方法 1：右键打开 (推荐)
 
-1. **右键点击**（或 Control + 点击）`CoPaw.app`
+1. **右键点击**（或 Control + 点击）`NekoClaw.app`
 2. 在菜单中选择 **"打开"**
 3. 在弹出的对话框中，再次点击 **"打开"** 按钮
 4. ✅ 之后双击即可正常启动，不会再弹窗
@@ -146,7 +146,7 @@ CoPaw 应用**未经过 Apple 开发者签名和公证（Notarization）**，mac
 
 ```bash
 # 移除下载隔离属性
-xattr -cr /Applications/CoPaw.app
+xattr -cr /Applications/NekoClaw.app
 ```
 
 ⚠️ **注意**: 此方法会完全移除安全检查，仅当您完全信任应用来源时使用。
@@ -164,7 +164,7 @@ xattr -cr /Applications/CoPaw.app
 
 #### 正常启动（双击）
 
-- 双击 `CoPaw.app` 即可启动
+- 双击 `NekoClaw.app` 即可启动
 - 应用会在后台运行，打开浏览器窗口
 - 日志输出到：`~/.copaw/desktop.log`
 
@@ -174,10 +174,10 @@ xattr -cr /Applications/CoPaw.app
 
 ```bash
 # 切换到应用目录
-cd /Applications  # 或您的 CoPaw.app 所在目录
+cd /Applications  # 或您的 NekoClaw.app 所在目录
 
 # 设置环境变量并启动
-APP_ENV="$(pwd)/CoPaw.app/Contents/Resources/env"
+APP_ENV="$(pwd)/NekoClaw.app/Contents/Resources/env"
 PYTHONPATH= PYTHONHOME="$APP_ENV" "$APP_ENV/bin/python" -m copaw desktop
 ```
 
@@ -207,7 +207,7 @@ A:
 A: 按照上述"解除系统安全限制"步骤操作
 
 **Q: 如何卸载？**
-A: 将 `CoPaw.app` 拖到废纸篓，然后删除 `~/.copaw` 配置文件夹
+A: 将 `NekoClaw.app` 拖到废纸篓，然后删除 `~/.copaw` 配置文件夹
 
 **Q: Intel Mac 可以用吗？**
 A: 可以运行，但无法使用 MLX 模型加速（MLX 仅支持 Apple Silicon）

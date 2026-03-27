@@ -353,6 +353,26 @@ if (-not (Test-Path $RealBin)) {
 Set-Content -Path $wrapperPath -Value $wrapperContent -Encoding UTF8
 Write-Info "Wrapper created at $wrapperPath"
 
+$nekoWrapperPath = Join-Path $CopawBin "nekoclaw.ps1"
+$nekoWrapperContent = @'
+# NekoClaw CLI wrapper — delegates to the uv-managed environment.
+$ErrorActionPreference = "Stop"
+
+$CopawHome = if ($env:COPAW_HOME) { $env:COPAW_HOME } else { Join-Path $HOME ".copaw" }
+$RealBin   = Join-Path $CopawHome "venv\Scripts\copaw.exe"
+
+if (-not (Test-Path $RealBin)) {
+    Write-Error "NekoClaw environment not found at $CopawHome\venv"
+    Write-Error "Please reinstall: irm <install-url> | iex"
+    exit 1
+}
+
+& $RealBin @args
+'@
+
+Set-Content -Path $nekoWrapperPath -Value $nekoWrapperContent -Encoding UTF8
+Write-Info "Wrapper created at $nekoWrapperPath"
+
 # Also create a .cmd wrapper for use from cmd.exe
 $cmdWrapperPath = Join-Path $CopawBin "copaw.cmd"
 $cmdWrapperContent = @"
@@ -371,6 +391,24 @@ if not exist "%REAL_BIN%" (
 
 Set-Content -Path $cmdWrapperPath -Value $cmdWrapperContent -Encoding UTF8
 Write-Info "CMD wrapper created at $cmdWrapperPath"
+
+$nekoCmdWrapperPath = Join-Path $CopawBin "nekoclaw.cmd"
+$nekoCmdWrapperContent = @"
+@echo off
+REM NekoClaw CLI wrapper — delegates to the uv-managed environment.
+set "COPAW_HOME=%COPAW_HOME%"
+if "%COPAW_HOME%"=="" set "COPAW_HOME=%USERPROFILE%\.copaw"
+set "REAL_BIN=%COPAW_HOME%\venv\Scripts\copaw.exe"
+if not exist "%REAL_BIN%" (
+    echo Error: NekoClaw environment not found at %COPAW_HOME%\venv >&2
+    echo Please reinstall: irm ^<install-url^> ^| iex >&2
+    exit /b 1
+)
+"%REAL_BIN%" %*
+"@
+
+Set-Content -Path $nekoCmdWrapperPath -Value $nekoCmdWrapperContent -Encoding UTF8
+Write-Info "CMD wrapper created at $nekoCmdWrapperPath"
 
 # ──Step 5: Update PATH via User Environment Variable ────────────────────────
 $targetPath = $CopawBin
@@ -466,11 +504,11 @@ Write-Host ""
 
 Write-Host "To get started, open a new terminal and run:"
 Write-Host ""
-Write-Host "  copaw init" -ForegroundColor White -NoNewline; Write-Host "       # first-time setup"
-Write-Host "  copaw app"  -ForegroundColor White -NoNewline; Write-Host "        # start CoPaw"
+Write-Host "  nekoclaw init" -ForegroundColor White -NoNewline; Write-Host "   # first-time setup"
+Write-Host "  nekoclaw app"  -ForegroundColor White -NoNewline; Write-Host "    # start NekoClaw"
 Write-Host ""
 Write-Host "To upgrade later, re-run this installer."
 Write-Host "To uninstall, run: " -NoNewline
-Write-Host "copaw uninstall" -ForegroundColor White
+Write-Host "nekoclaw uninstall" -ForegroundColor White
 
 } @args

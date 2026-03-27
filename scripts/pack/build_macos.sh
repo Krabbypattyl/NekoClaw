@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# One-click build: console -> conda-pack -> CoPaw.app. Run from repo root.
+# One-click build: console -> conda-pack -> NekoClaw.app. Run from repo root.
 # Requires: conda, node/npm (for console). Optional: icon.icns in assets/.
 
 set -e
@@ -8,7 +8,7 @@ cd "$REPO_ROOT"
 PACK_DIR="$(cd "$(dirname "$0")" && pwd)"
 DIST="${DIST:-dist}"
 ARCHIVE="${DIST}/copaw-env.tar.gz"
-APP_NAME="CoPaw"
+APP_NAME="NekoClaw"
 APP_DIR="${DIST}/${APP_NAME}.app"
 
 echo "== Building wheel (includes console frontend) =="
@@ -40,7 +40,16 @@ else
 fi
 
 echo "== Building conda-packed env =="
-python "${PACK_DIR}/build_common.py" --output "$ARCHIVE" --format tar.gz
+PYTHON_BIN="${PYTHON_BIN:-python}"
+if ! command -v "$PYTHON_BIN" >/dev/null 2>&1; then
+  if command -v python3 >/dev/null 2>&1; then
+    PYTHON_BIN="python3"
+  else
+    echo "Error: neither 'python' nor 'python3' is available in PATH." >&2
+    exit 1
+  fi
+fi
+"$PYTHON_BIN" "${PACK_DIR}/build_common.py" --output "$ARCHIVE" --format tar.gz
 
 echo "== Building .app bundle =="
 rm -rf "$APP_DIR"
@@ -169,7 +178,7 @@ cat > "${APP_DIR}/Contents/Info.plist" << INFOPLIST
   <key>CFBundleShortVersionString</key><string>${VERSION}</string>
   ${ICON_PLIST}<key>NSHighResolutionCapable</key><true/>
   <key>LSMinimumSystemVersion</key><string>14.0</string>
-  <key>NSDesktopFolderUsageDescription</key><string>CoPaw may access files in your Desktop folder if you use file-related features. You can choose Don'\''t Allow; the app will still run with limited file access.</string>
+  <key>NSDesktopFolderUsageDescription</key><string>NekoClaw may access files in your Desktop folder if you use file-related features. You can choose Don'\''t Allow; the app will still run with limited file access.</string>
 </dict>
 </plist>
 INFOPLIST
@@ -177,7 +186,7 @@ INFOPLIST
 echo "== Built ${APP_DIR} =="
 # Optional: create zip for distribution (set CREATE_ZIP=1)
 if [[ -n "${CREATE_ZIP}" ]]; then
-  ZIP_NAME="${DIST}/CoPaw-${VERSION}-macOS.zip"
+  ZIP_NAME="${DIST}/NekoClaw-${VERSION}-macOS.zip"
   ditto -c -k --sequesterRsrc --keepParent "${APP_DIR}" "${ZIP_NAME}"
   echo "== Created ${ZIP_NAME} =="
 fi

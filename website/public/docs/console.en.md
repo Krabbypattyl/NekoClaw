@@ -1,6 +1,6 @@
 # Console
 
-The **Console** is CoPaw's built-in web interface. After running `copaw app`,
+The **Console** is CoPaw's built-in web interface. After running `nekoclaw app`,
 open `http://127.0.0.1:8088/` in your browser to enter the Console.
 
 **In the Console, you can:**

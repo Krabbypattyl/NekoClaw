@@ -294,6 +294,38 @@ export function ChannelDrawer({
           </>
         );
 
+      case "neko":
+        return (
+          <>
+            <Form.Item
+              name="host"
+              label="Host"
+              rules={[{ required: true }]}
+            >
+              <Input placeholder="127.0.0.1" />
+            </Form.Item>
+            <Form.Item
+              name="port"
+              label="Port"
+              rules={[{ required: true }]}
+            >
+              <InputNumber
+                min={1}
+                max={65535}
+                style={{ width: "100%" }}
+                placeholder="8089"
+              />
+            </Form.Item>
+            <Form.Item
+              name="reply_timeout"
+              label="Reply Timeout (sec)"
+              tooltip="Set 0 or leave empty to disable timeout."
+            >
+              <InputNumber min={0} style={{ width: "100%" }} />
+            </Form.Item>
+          </>
+        );
+
       case "discord":
         return (
           <>

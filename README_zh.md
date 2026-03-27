@@ -1,6 +1,6 @@
 <div align="center">
 
-# CoPaw
+# NekoClaw
 
 [![GitHub 仓库](https://img.shields.io/badge/GitHub-仓库-black.svg?logo=github)](https://github.com/agentscope-ai/CoPaw)
 [![PyPI](https://img.shields.io/pypi/v/copaw?color=3775A9&label=PyPI&logo=pypi)](https://pypi.org/project/copaw/)
@@ -19,7 +19,7 @@
 [[文档](https://copaw.agentscope.io/)] [[English](README.md)] [[日本語](README_ja.md)]
 
 <p align="center">
-  <img src="https://img.alicdn.com/imgextra/i2/O1CN014TIqyO1U5wDiSbFfA_!!6000000002467-2-tps-816-192.png" alt="CoPaw Logo" width="120">
+  <img src="https://img.alicdn.com/imgextra/i2/O1CN014TIqyO1U5wDiSbFfA_!!6000000002467-2-tps-816-192.png" alt="NekoClaw Logo" width="120">
 </p>
 
 <p align="center"><b>懂你所需，伴你左右。</b></p>
@@ -107,8 +107,8 @@
 
 ```bash
 pip install copaw
-copaw init --defaults
-copaw app
+nekoclaw init --defaults
+nekoclaw app
 ```
 
 在浏览器打开 **http://127.0.0.1:8088/** 即可使用控制台（与 CoPaw 对话、配置 Agent）。若要在钉钉、飞书、QQ 等 app 内对话，请参考 [文档](https://copaw.agentscope.io/docs/channels) 接入频道。
@@ -177,8 +177,8 @@ irm https://copaw.agentscope.io/install.ps1 | iex
 安装完成后，请打开新终端并运行：
 
 ```bash
-copaw init --defaults   # 或：copaw init（交互式）
-copaw app
+nekoclaw init --defaults   # 或：nekoclaw init（交互式）
+nekoclaw app
 ```
 
 <details>
@@ -237,13 +237,13 @@ copaw uninstall --purge  # 删除所有内容
 > - **性能可能存在缺陷**：启动速度、内存占用等方面可能需要进一步优化
 > - **功能持续完善中**：部分功能可能不稳定或缺失
 
-如果你不习惯使用命令行，可以下载并使用 CoPaw 的桌面应用版本，无需手动配置 Python 环境或执行命令。
+如果你不习惯使用命令行，可以下载并使用 NekoClaw 的桌面应用版本，无需手动配置 Python 环境或执行命令。
 
 #### 下载
 
 从 [GitHub Releases](https://github.com/agentscope-ai/CoPaw/releases) 下载桌面应用：
-- **Windows**: `CoPaw-Setup-<version>.exe`
-- **macOS**: `CoPaw-<version>-macOS.zip` (推荐 Apple Silicon)
+- **Windows**: `NekoClaw-Setup-<version>.exe`
+- **macOS**: `NekoClaw-<version>-macOS.zip` (推荐 Apple Silicon)
 
 #### 特点
 
@@ -258,17 +258,17 @@ copaw uninstall --purge  # 删除所有内容
 
 #### macOS：绕过系统安全限制
 
-当你从 Releases 下载 CoPaw macOS 应用时，macOS 可能显示：*"Apple 无法验证 'CoPaw' 不包含恶意软件"*。这是因为应用未经过公证。你仍然可以通过以下方式打开：
+当你从 Releases 下载 NekoClaw macOS 应用时，macOS 可能显示：*"Apple 无法验证 'NekoClaw' 不包含恶意软件"*。这是因为应用未经过公证。你仍然可以通过以下方式打开：
 
 - **右键打开（推荐）**
-  右键点击（或 Control + 点击）CoPaw 应用 → **"打开"** → 在对话框中再次点击 **"打开"**。这会告诉 Gatekeeper 你信任该应用；之后可以像往常一样双击启动。
+  右键点击（或 Control + 点击）NekoClaw 应用 → **"打开"** → 在对话框中再次点击 **"打开"**。这会告诉 Gatekeeper 你信任该应用；之后可以像往常一样双击启动。
 
 - **在系统设置中允许**
-  如果仍被阻止，进入 **系统设置 → 隐私与安全性**，向下滚动找到类似 *"已阻止 'CoPaw'，因为无法验证开发者"* 的提示，点击 **"仍要打开"** 或 **"允许"**。
+  如果仍被阻止，进入 **系统设置 → 隐私与安全性**，向下滚动找到类似 *"已阻止 'NekoClaw'，因为无法验证开发者"* 的提示，点击 **"仍要打开"** 或 **"允许"**。
 
 - **移除隔离属性（不推荐大多数用户）**
   在终端运行：
-  `xattr -cr /Applications/CoPaw.app`
+  `xattr -cr /Applications/NekoClaw.app`
   （或使用解压后的 `.app` 路径）。这会清除"从互联网下载"的隔离标志，使警告通常不会出现，但不如使用 **右键 → 打开** 安全和可控。
 
 详细使用说明、故障排除和常见问题，请参见 [桌面应用指南](https://copaw.agentscope.io/docs/desktop)。
@@ -462,11 +462,107 @@ pip install -e .
 - **开发**（测试、格式化）：`pip install -e ".[dev,full]"`
 - **然后**：运行 `copaw init --defaults`，再运行 `copaw app`。
 
+### 开发版隔离运行
+
+如果你的机器上已经安装过正式版 CoPaw，但希望在源码目录里单独运行一个互不影响的开发版，可以直接使用仓库内置的开发环境文件和一键启动脚本：
+
+```bash
+cd /Users/mac/Code/NekoClaw
+bash scripts/dev_start.sh
+```
+
+这个脚本会：
+
+- 自动加载仓库根目录的 `.env`
+- 优先使用仓库本地虚拟环境 `.venv`
+- 首次运行时自动初始化独立工作目录
+- 以源码模式启动开发版服务
+
+当前仓库默认的开发版配置如下：
+
+```env
+COPAW_WORKING_DIR=/Users/mac/.copaw-dev
+COPAW_LOG_LEVEL=DEBUG
+COPAW_OPENAPI_DOCS=true
+COPAW_CORS_ORIGINS=http://127.0.0.1:5173,http://localhost:5173
+COPAW_DEV_HOST=127.0.0.1
+COPAW_DEV_PORT=8098
+COPAW_DEV_RELOAD=1
+```
+
+启动后默认访问地址为：
+
+```text
+http://127.0.0.1:8098
+```
+
+如果还没有创建本地虚拟环境，可先执行：
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -e ".[dev]"
+```
+
+如需修改开发版的工作目录、端口或热重载开关，直接编辑仓库根目录的 `.env` 即可。
+
+### Neko Channel 配置
+
+源码版现已内置 `neko` 渠道，可直接在配置文件中启用，无需再依赖 `~/.copaw/custom_channels/neko_channel.py`。
+
+在对应工作目录的 `config.json` 中加入：
+
+```json
+{
+  "channels": {
+    "neko": {
+      "enabled": true,
+      "bot_prefix": "",
+      "host": "127.0.0.1",
+      "port": 8089,
+      "reply_timeout": 300
+    }
+  }
+}
+```
+
+字段说明：
+
+- `enabled`：是否启用 `neko` 渠道
+- `bot_prefix`：返回消息时附加的前缀，可留空
+- `host`：HTTP 服务监听地址，默认仅监听本机 `127.0.0.1`
+- `port`：HTTP 服务端口，默认 `8089`
+- `reply_timeout`：等待 CoPaw 返回最终回复的超时时间，单位秒；设置为 `0` 或空值可关闭超时限制
+
+启用后，`neko` 渠道会暴露两个接口：
+
+```text
+POST /neko/send
+GET  /health
+```
+
+典型请求示例：
+
+```bash
+curl -X POST http://127.0.0.1:8089/neko/send \
+  -H "Content-Type: application/json" \
+  -d '{
+    "sender_id": "neko-user",
+    "session_id": "neko-session",
+    "text": "你好，帮我总结今天的任务",
+    "meta": {
+      "reply_timeout": 300
+    }
+  }'
+```
+
+如果你此前已经在 `~/.copaw/custom_channels/` 下安装过旧版 `neko_channel.py`，建议将其移走或改名，避免和源码内置的 `neko` 渠道同名覆盖。
+
 ---
 
-## 为什么叫 CoPaw？
+## 为什么叫 NekoClaw？
 
-CoPaw 既是「你的搭档小爪子」（co-paw），也寓意 **Co Personal Agent Workstation**（协同个人智能体工作台）。我们希望它不是冰冷的工具，而是一只随时准备帮忙的温暖「小爪子」，是你数字生活中最默契的伙伴。
+NekoClaw 结合了「Neko」（猫）与「Claw」（爪子），代表一位灵巧、可靠、随时待命的 AI 搭档。我们希望它不是冰冷的工具，而是一只随时准备帮忙的温暖「小爪子」，是你数字生活中最默契的伙伴。
 
 ---
 

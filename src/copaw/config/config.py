@@ -171,6 +171,14 @@ class XiaoYiConfig(BaseChannelConfig):
     task_timeout_ms: int = 3600000  # 1 hour task timeout
 
 
+class NekoConfig(BaseChannelConfig):
+    """N.E.K.O channel configuration."""
+
+    host: str = "127.0.0.1"
+    port: int = 8089
+    reply_timeout: float | None = 300.0
+
+
 class ChannelConfig(BaseModel):
     """Built-in channel configs; extra keys allowed for plugin channels."""
 
@@ -180,6 +188,7 @@ class ChannelConfig(BaseModel):
     discord: DiscordConfig = DiscordConfig()
     dingtalk: DingTalkConfig = DingTalkConfig()
     feishu: FeishuConfig = FeishuConfig()
+    neko: NekoConfig = NekoConfig()
     qq: QQConfig = QQConfig()
     telegram: TelegramConfig = TelegramConfig()
     mattermost: MattermostConfig = MattermostConfig()
@@ -906,6 +915,7 @@ class Config(BaseModel):
 
 
 ChannelConfigUnion = Union[
+    NekoConfig,
     IMessageChannelConfig,
     DiscordConfig,
     DingTalkConfig,

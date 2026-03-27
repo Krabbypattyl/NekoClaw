@@ -51,3 +51,13 @@ python scripts/run_tests.py -p
 # Show help
 python scripts/run_tests.py -h
 ```
+
+## Start isolated dev app
+
+```bash
+bash scripts/dev_start.sh
+```
+
+- Loads the repo-root `.env`.
+- Uses the repo-local `.venv`.
+- Starts a source-based CoPaw instance with an isolated working directory.

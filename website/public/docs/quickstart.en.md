@@ -102,7 +102,7 @@ bash install.sh --extras ollama      # Ollama (cross-platform, requires Ollama s
 .\install.ps1 -Extras ollama        # Ollama
 ```
 
-To upgrade, simply re-run the install command. To uninstall, run `copaw uninstall`.
+To upgrade, simply re-run the install command. To uninstall, run `nekoclaw uninstall`.
 
 ### Step 2: Init
 
@@ -112,23 +112,23 @@ Generate `config.json` and `HEARTBEAT.md` in the working directory (default
 - **Use defaults** (no prompts; good for getting running first, then editing
   config later):
   ```bash
-  copaw init --defaults
+  nekoclaw init --defaults
   ```
 - **Interactive** (prompts for heartbeat interval, target, active hours, and
   optional channel and Skills setup):
   ```bash
-  copaw init
+  nekoclaw init
   ```
   See [CLI - Getting started](./cli#getting-started).
 
-To overwrite existing config, use `copaw init --force` (you will be prompted).
+To overwrite existing config, use `nekoclaw init --force` (you will be prompted).
 After init, if no channel is enabled yet, follow [Channels](./channels) to add
 DingTalk, Feishu, QQ, etc.
 
 ### Step 3: Start the server
 
 ```bash
-copaw app
+nekoclaw app
 ```
 
 The server listens on `127.0.0.1:8088` by default. If you have already
@@ -154,7 +154,7 @@ Then follow [Step 2: Init](#step-2-init) and [Step 3: Start the server](#step-3-
 
 ## Option C: Desktop Application (Beta)
 
-If you're not comfortable with command-line tools, you can download and use CoPaw's desktop application without manually configuring Python environments or running commands.
+If you're not comfortable with command-line tools, you can download and use NekoClaw's desktop application without manually configuring Python environments or running commands.
 
 ### Features
 
@@ -168,13 +168,13 @@ If you're not comfortable with command-line tools, you can download and use CoPa
 1. **Download the installer**
    Go to [GitHub Releases](https://github.com/agentscope-ai/CoPaw/releases) to download the version for your system:
 
-   - Windows: `CoPaw-Setup-<version>.exe`
-   - macOS: `CoPaw-<version>-macOS.zip`
+   - Windows: `NekoClaw-Setup-<version>.exe`
+   - macOS: `NekoClaw-<version>-macOS.zip`
 
 2. **Install and Launch**
 
    - **Windows**: Double-click the `.exe` file to install following the wizard, then double-click the desktop shortcut to launch
-   - **macOS**: Extract the `.zip` to get `CoPaw.app`, first time requires right-click and select "Open" to bypass system security restrictions
+   - **macOS**: Extract the `.zip` to get `NekoClaw.app`, first time requires right-click and select "Open" to bypass system security restrictions
 
 3. **First Launch Note**
    The first launch may take 10-60 seconds (depending on your system configuration), as the application needs to initialize the Python environment and load dependencies. Please wait patiently for the browser window to open automatically.

@@ -21,6 +21,7 @@ from ..config.config import (
     DingTalkConfig,
     FeishuConfig,
     IMessageChannelConfig,
+    NekoConfig,
     QQConfig,
     VoiceChannelConfig,
     load_agent_config,
@@ -46,6 +47,7 @@ _SECRET_FIELDS = {
 }
 
 _ALL_CHANNEL_NAMES = {
+    "neko": "Neko",
     "imessage": "iMessage",
     "discord": "Discord",
     "telegram": "Telegram",
@@ -630,10 +632,57 @@ def configure_console(current_config: ConsoleConfig) -> ConsoleConfig:
     return current_config
 
 
+def configure_neko(current_config: NekoConfig) -> NekoConfig:
+    """Configure Neko channel interactively."""
+    click.echo("\n=== Configure Neko Channel ===")
+
+    enabled = prompt_confirm(
+        "Enable Neko channel?",
+        default=current_config.enabled,
+    )
+
+    if not enabled:
+        current_config.enabled = False
+        return current_config
+
+    current_config.enabled = True
+
+    bot_prefix = click.prompt(
+        "Bot prefix",
+        default=current_config.bot_prefix or "",
+        type=str,
+    )
+    current_config.bot_prefix = bot_prefix
+
+    host = click.prompt(
+        "Bind host",
+        default=current_config.host or "127.0.0.1",
+        type=str,
+    )
+    current_config.host = host
+
+    port = click.prompt(
+        "Bind port",
+        default=current_config.port or 8089,
+        type=int,
+    )
+    current_config.port = port
+
+    reply_timeout = click.prompt(
+        "Reply timeout in seconds (0 to disable timeout)",
+        default=current_config.reply_timeout or 300.0,
+        type=float,
+    )
+    current_config.reply_timeout = None if reply_timeout <= 0 else reply_timeout
+
+    return current_config
+
+
 # ── reusable channel configuration flow (used by init_cmd too) ─────
 
 # Full registry — filtered at runtime by get_channel_configurators().
 _ALL_CHANNEL_CONFIGURATORS = {
+    "neko": ("Neko", configure_neko),
     "imessage": ("iMessage", configure_imessage),
     "discord": ("Discord", configure_discord),
     "telegram": ("Telegram", configure_telegram),

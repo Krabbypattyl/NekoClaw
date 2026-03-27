@@ -1,6 +1,6 @@
 <div align="center">
 
-# CoPaw
+# NekoClaw
 
 [![GitHub Repo](https://img.shields.io/badge/GitHub-Repo-black.svg?logo=github)](https://github.com/agentscope-ai/CoPaw)
 [![PyPI](https://img.shields.io/pypi/v/copaw?color=3775A9&label=PyPI&logo=pypi)](https://pypi.org/project/copaw/)
@@ -19,7 +19,7 @@
 [[ドキュメント](https://copaw.agentscope.io/)] [[English README](README.md)] [[中文 README](README_zh.md)]
 
 <p align="center">
-  <img src="https://img.alicdn.com/imgextra/i2/O1CN014TIqyO1U5wDiSbFfA_!!6000000002467-2-tps-816-192.png" alt="CoPaw Logo" width="120">
+  <img src="https://img.alicdn.com/imgextra/i2/O1CN014TIqyO1U5wDiSbFfA_!!6000000002467-2-tps-816-192.png" alt="NekoClaw Logo" width="120">
 </p>
 
 <p align="center"><b>あなたのために働き、あなたとともに成長する。</b></p>
@@ -103,8 +103,8 @@ Pythonを自分で管理する場合:
 
 ```bash
 pip install copaw
-copaw init --defaults
-copaw app
+nekoclaw init --defaults
+nekoclaw app
 ```
 
 ブラウザで **http://127.0.0.1:8088/** を開くとコンソール（CoPawとのチャット、エージェントの設定）が利用できます。DingTalk、Feishu、QQなどで会話するには、[チャネルドキュメント](https://copaw.agentscope.io/docs/channels)でチャネルを接続してください。
@@ -173,8 +173,8 @@ irm https://copaw.agentscope.io/install.ps1 | iex
 インストール完了後、新しいターミナルを開き、以下を実行してください：
 
 ```bash
-copaw init --defaults   # または: copaw init（対話式）
-copaw app
+nekoclaw init --defaults   # または: nekoclaw init（対話式）
+nekoclaw app
 ```
 
 <details>
@@ -233,13 +233,13 @@ copaw uninstall --purge  # すべて削除
 > - **パフォーマンスの問題の可能性**: 起動時間、メモリ使用量などのパフォーマンス面でさらなる最適化が必要な場合があります
 > - **開発中の機能**: 一部の機能が不安定または欠落している可能性があります
 
-コマンドラインツールに慣れていない場合、CoPawのデスクトップアプリケーションをダウンロードして使用できます。Python環境の手動設定やコマンドの実行は不要です。
+コマンドラインツールに慣れていない場合、NekoClawのデスクトップアプリケーションをダウンロードして使用できます。Python環境の手動設定やコマンドの実行は不要です。
 
 #### ダウンロード
 
 [GitHub Releases](https://github.com/agentscope-ai/CoPaw/releases)からデスクトップアプリをダウンロード:
-- **Windows**: `CoPaw-Setup-<version>.exe`
-- **macOS**: `CoPaw-<version>-macOS.zip` (Apple Silicon推奨)
+- **Windows**: `NekoClaw-Setup-<version>.exe`
+- **macOS**: `NekoClaw-<version>-macOS.zip` (Apple Silicon推奨)
 
 #### 特徴
 
@@ -254,17 +254,17 @@ copaw uninstall --purge  # すべて削除
 
 #### macOS: システムセキュリティ制限の回避
 
-ReleasesからCoPaw macOSアプリをダウンロードすると、macOSは次のように表示する場合があります: *「Appleは'CoPaw'に悪意のあるソフトウェアが含まれていないことを確認できません」*。これはアプリが公証されていないためです。以下の方法で開くことができます:
+ReleasesからNekoClaw macOSアプリをダウンロードすると、macOSは次のように表示する場合があります: *「Appleは'NekoClaw'に悪意のあるソフトウェアが含まれていないことを確認できません」*。これはアプリが公証されていないためです。以下の方法で開くことができます:
 
 - **右クリックして開く（推奨）**
-  CoPawアプリを右クリック（またはControl+クリック）→ **「開く」** → ダイアログで再度 **「開く」** をクリック。これによりGatekeeperにアプリを信頼していることを伝えます。その後は通常通りダブルクリックで起動できます。
+  NekoClawアプリを右クリック（またはControl+クリック）→ **「開く」** → ダイアログで再度 **「開く」** をクリック。これによりGatekeeperにアプリを信頼していることを伝えます。その後は通常通りダブルクリックで起動できます。
 
 - **システム設定で許可**
-  それでもブロックされる場合、**システム設定 → プライバシーとセキュリティ** に移動し、*「'CoPaw'は未確認の開発元からのものであるためブロックされました」* のようなメッセージまでスクロールし、**「このまま開く」** または **「許可」** をクリックします。
+  それでもブロックされる場合、**システム設定 → プライバシーとセキュリティ** に移動し、*「'NekoClaw'は未確認の開発元からのものであるためブロックされました」* のようなメッセージまでスクロールし、**「このまま開く」** または **「許可」** をクリックします。
 
 - **検疫属性の削除（ほとんどのユーザーには非推奨）**
   ターミナルで実行:
-  `xattr -cr /Applications/CoPaw.app`
+  `xattr -cr /Applications/NekoClaw.app`
   （または解凍後の `.app` へのパスを使用）。これにより「インターネットからダウンロードされた」検疫フラグがクリアされ、通常は警告が表示されなくなりますが、**右クリック → 開く** を使用するよりも安全性と制御性が低くなります。
 
 詳細な使用方法、トラブルシューティング、よくある問題については、[デスクトップアプリケーションガイド](https://copaw.agentscope.io/docs/desktop)を参照してください。
@@ -454,9 +454,9 @@ pip install -e .
 
 ---
 
-## なぜCoPaw？
+## なぜNekoClaw？
 
-CoPawは **Co Personal Agent Workstation**（共同パーソナルエージェントワークステーション）であると同時に、「co-paw」— いつもあなたのそばにいるパートナーを表しています。単なる冷たいツールではなく、CoPawはいつでも手（または肉球！）を貸してくれる温かい「小さな肉球」です。デジタルライフにおける究極のチームメイトです。
+NekoClaw は「Neko」（猫）と「Claw」（爪）を組み合わせた名前で、俊敏で頼れる AI パートナーをイメージしています。単なる冷たいツールではなく、NekoClaw はいつでも手（または肉球！）を貸してくれる温かい「小さな肉球」であり、デジタルライフにおける心強いチームメイトです。
 
 ---
 

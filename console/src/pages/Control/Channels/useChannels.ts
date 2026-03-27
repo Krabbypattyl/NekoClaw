@@ -35,6 +35,7 @@ export function useChannels() {
   const builtinOrder = useMemo(
     () => [
       "console",
+      "neko",
       "dingtalk",
       "feishu",
       "imessage",

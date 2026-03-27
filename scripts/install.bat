@@ -486,6 +486,23 @@ echo. >> "%WRAPPER_PS1%"
 echo ^& $RealBin @args >> "%WRAPPER_PS1%"
 echo [copaw] Wrapper created at %WRAPPER_PS1%
 
+REM PowerShell wrapper alias
+set "WRAPPER_NEKO_PS1=%COPAW_BIN%\nekoclaw.ps1"
+echo # NekoClaw CLI wrapper -- delegates to the uv-managed environment. > "%WRAPPER_NEKO_PS1%"
+echo $ErrorActionPreference = "Stop" >> "%WRAPPER_NEKO_PS1%"
+echo. >> "%WRAPPER_NEKO_PS1%"
+echo $CopawHome = if ($env:COPAW_HOME) { $env:COPAW_HOME } else { Join-Path $HOME ".copaw" } >> "%WRAPPER_NEKO_PS1%"
+echo $RealBin = Join-Path $CopawHome "venv\Scripts\copaw.exe" >> "%WRAPPER_NEKO_PS1%"
+echo. >> "%WRAPPER_NEKO_PS1%"
+echo if (-not (Test-Path $RealBin)) { >> "%WRAPPER_NEKO_PS1%"
+echo     Write-Error "NekoClaw environment not found at $CopawHome\venv" >> "%WRAPPER_NEKO_PS1%"
+echo     Write-Error "Please reinstall: irm ^<install-url^> ^| iex" >> "%WRAPPER_NEKO_PS1%"
+echo     exit 1 >> "%WRAPPER_NEKO_PS1%"
+echo } >> "%WRAPPER_NEKO_PS1%"
+echo. >> "%WRAPPER_NEKO_PS1%"
+echo ^& $RealBin @args >> "%WRAPPER_NEKO_PS1%"
+echo [copaw] Wrapper created at %WRAPPER_NEKO_PS1%
+
 REM CMD wrapper
 set "WRAPPER_CMD=%COPAW_BIN%\copaw.cmd"
 echo @echo off > "%WRAPPER_CMD%"
@@ -500,6 +517,21 @@ echo     exit /b 1 >> "%WRAPPER_CMD%"
 echo ) >> "%WRAPPER_CMD%"
 echo "%%REAL_BIN%%" %%* >> "%WRAPPER_CMD%"
 echo [copaw] CMD wrapper created at %WRAPPER_CMD%
+
+REM CMD wrapper alias
+set "WRAPPER_NEKO_CMD=%COPAW_BIN%\nekoclaw.cmd"
+echo @echo off > "%WRAPPER_NEKO_CMD%"
+echo REM NekoClaw CLI wrapper -- delegates to the uv-managed environment. >> "%WRAPPER_NEKO_CMD%"
+echo set "COPAW_HOME=%%COPAW_HOME%%" >> "%WRAPPER_NEKO_CMD%"
+echo if "%%COPAW_HOME%%"=="" set "COPAW_HOME=%%USERPROFILE%%\.copaw" >> "%WRAPPER_NEKO_CMD%"
+echo set "REAL_BIN=%%COPAW_HOME%%\venv\Scripts\copaw.exe" >> "%WRAPPER_NEKO_CMD%"
+echo if not exist "%%REAL_BIN%%" ( >> "%WRAPPER_NEKO_CMD%"
+echo     echo Error: NekoClaw environment not found at %%COPAW_HOME%%\venv ^>^&2 >> "%WRAPPER_NEKO_CMD%"
+echo     echo Please reinstall ^>^&2 >> "%WRAPPER_NEKO_CMD%"
+echo     exit /b 1 >> "%WRAPPER_NEKO_CMD%"
+echo ) >> "%WRAPPER_NEKO_CMD%"
+echo "%%REAL_BIN%%" %%* >> "%WRAPPER_NEKO_CMD%"
+echo [copaw] CMD wrapper created at %WRAPPER_NEKO_CMD%
 
 REM ──── Step 5: Update PATH via user environment variable ──────────────────────────────────────────────────
 set "CURRENT_USER_PATH="
@@ -547,10 +579,10 @@ if "%CONSOLE_AVAILABLE%"=="1" (
 echo.
 echo To get started, open a new terminal and run:
 echo.
-echo   copaw init       # first-time setup
-echo   copaw app        # start CoPaw
+echo   nekoclaw init    # first-time setup
+echo   nekoclaw app     # start NekoClaw
 echo.
 echo To upgrade later, re-run this installer.
-echo To uninstall, run: copaw uninstall
+echo To uninstall, run: nekoclaw uninstall
 
 exit /b 0

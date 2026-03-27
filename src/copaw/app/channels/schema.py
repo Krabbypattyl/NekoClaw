@@ -29,6 +29,7 @@ class ChannelAddress:
 
 # Built-in channel type identifiers. Plugin channels use arbitrary str keys.
 BUILTIN_CHANNEL_TYPES = (
+    "neko",
     "imessage",
     "discord",
     "dingtalk",

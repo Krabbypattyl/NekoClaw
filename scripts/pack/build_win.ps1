@@ -275,7 +275,7 @@ if (-not $Version) {
 if (-not $Version) { $Version = "0.0.0"; Write-Host "[build_win] WARN: Using fallback version 0.0.0" }
 Write-Host "[build_win] Version determined: $Version"
 Write-Host "[build_win] COPAW_VERSION=$Version OUTPUT_EXE will be under $Dist"
-$OutInstaller = Join-Path (Join-Path $RepoRoot $Dist) "CoPaw-Setup-$Version.exe"
+$OutInstaller = Join-Path (Join-Path $RepoRoot $Dist) "NekoClaw-Setup-$Version.exe"
 # Pass absolute paths to NSIS (keep backslashes).
 $UnpackedFull = (Resolve-Path $EnvRoot).Path
 $OutputExeNsi = [System.IO.Path]::GetFullPath($OutInstaller)

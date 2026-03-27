@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Allow running CoPaw via ``python -m copaw``."""
+"""Allow running NekoClaw via ``python -m copaw``."""
 from .cli.main import cli
 
 if __name__ == "__main__":

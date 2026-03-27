@@ -3,6 +3,7 @@ export type ChannelKey = string;
 
 // Built-in channel labels
 export const CHANNEL_LABELS: Record<string, string> = {
+  neko: "Neko",
   imessage: "iMessage",
   discord: "Discord",
   dingtalk: "DingTalk",

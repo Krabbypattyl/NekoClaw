@@ -96,9 +96,9 @@ export const compareVersions = (a: string, b: string): number => {
 // ── Update markdown ───────────────────────────────────────────────────────
 
 export const UPDATE_MD: Record<string, string> = {
-  zh: `### CoPaw如何更新
+  zh: `### NekoClaw如何更新
 
-要更新 CoPaw 到最新版本，可根据你的安装方式选择对应方法：
+要更新 NekoClaw 到最新版本，可根据你的安装方式选择对应方法：
 
 1. 如果你使用的是一键安装脚本，直接重新运行安装命令即可自动升级。
 
@@ -125,9 +125,9 @@ docker run -p 127.0.0.1:8088:8088 -v copaw-data:/app/working agentscope/copaw:la
 
 升级后重启服务 copaw app。`,
 
-  ru: `### Как обновить CoPaw
+  ru: `### Как обновить NekoClaw
 
-Чтобы обновить CoPaw, выберите способ в зависимости от типа установки:
+Чтобы обновить NekoClaw, выберите способ в зависимости от типа установки:
 
 1. Если вы устанавливали через однострочный скрипт, повторно запустите установщик для обновления.
 
@@ -154,9 +154,9 @@ docker run -p 127.0.0.1:8088:8088 -v copaw-data:/app/working agentscope/copaw:la
 
 После обновления перезапустите сервис с помощью \`copaw app\`.`,
 
-  en: `### How to update CoPaw
+  en: `### How to update NekoClaw
 
-To update CoPaw, use the method matching your installation type:
+To update NekoClaw, use the method matching your installation type:
 
 1. If installed via one-line script, re-run the installer to upgrade.
 
