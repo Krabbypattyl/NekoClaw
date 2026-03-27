@@ -36,6 +36,7 @@ from .config import (
 logger = logging.getLogger(__name__)
 
 
+# pylint: disable=too-many-return-statements
 def _normalize_working_dir_bound_paths(data: object) -> object:
     """Normalize legacy ~/.copaw-bound paths to current WORKING_DIR.
 
@@ -47,7 +48,6 @@ def _normalize_working_dir_bound_paths(data: object) -> object:
     legacy_root_tilde = "~/.copaw"
     legacy_root = Path(legacy_root_tilde).expanduser().resolve()
     new_root = WORKING_DIR
-    legacy_root_abs = str(legacy_root)
     new_root_abs = str(new_root)
 
     def _starts_with_path_prefix(value: str, prefix: str) -> bool:

@@ -673,7 +673,9 @@ def configure_neko(current_config: NekoConfig) -> NekoConfig:
         default=current_config.reply_timeout or 300.0,
         type=float,
     )
-    current_config.reply_timeout = None if reply_timeout <= 0 else reply_timeout
+    current_config.reply_timeout = (
+        None if reply_timeout <= 0 else reply_timeout
+    )
 
     return current_config
 

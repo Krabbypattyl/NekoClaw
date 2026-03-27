@@ -1,7 +1,10 @@
+# -*- coding: utf-8 -*-
 from pathlib import Path
 
 from copaw.config import utils as config_utils
 
+
+# pylint: disable=protected-access
 
 def test_normalize_working_dir_bound_paths_rewrites_legacy_root(monkeypatch):
     legacy_root = Path("~/.copaw").expanduser().resolve()
@@ -12,7 +15,9 @@ def test_normalize_working_dir_bound_paths_rewrites_legacy_root(monkeypatch):
         "agents": {
             "profiles": {
                 "default": {
-                    "workspace_dir": str(legacy_root / "workspaces" / "default"),
+                    "workspace_dir": str(
+                        legacy_root / "workspaces" / "default",
+                    ),
                 },
             },
         },

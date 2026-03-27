@@ -9,8 +9,8 @@ from copaw.config.config import NekoConfig
 
 
 async def _noop_process(_request):
-    if False:  # pragma: no cover
-        yield None
+    for _ in ():
+        yield _
 
 
 def test_neko_from_config():

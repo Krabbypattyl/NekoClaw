@@ -57,7 +57,7 @@ class NekoChannel(BaseChannel):
         if value in (None, ""):
             return None
         try:
-            parsed = float(value)
+            parsed = float(str(value))
         except (TypeError, ValueError):
             return default
         return parsed if parsed > 0 else None
@@ -202,7 +202,8 @@ class NekoChannel(BaseChannel):
         payload = native_payload if isinstance(native_payload, dict) else {}
 
         channel_id = payload.get("channel_id") or self.channel
-        meta = payload.get("meta") if isinstance(payload.get("meta"), dict) else {}
+        meta_value = payload.get("meta")
+        meta = meta_value if isinstance(meta_value, dict) else {}
         sender_id = self._normalize_sender_id(payload.get("sender_id"))
         session_id = self._normalize_session_id(
             payload.get("session_id"),
@@ -352,8 +353,14 @@ class NekoChannel(BaseChannel):
 
             final_reply = self._compose_pending_reply(request_id)
             if not final_reply:
-                final_reply = "[NekoClaw 已完成，但没有返回可显示的文本结果]"
-            future = self._pending_replies.get(request_id) if request_id else None
+                final_reply = (
+                    "[NekoClaw 已完成，但没有返回可显示的文本结果]"
+                )
+            future = (
+                self._pending_replies.get(request_id)
+                if request_id
+                else None
+            )
             if future is not None and not future.done():
                 future.set_result(final_reply)
 
@@ -369,8 +376,14 @@ class NekoChannel(BaseChannel):
             )
             final_reply = self._compose_pending_reply(request_id)
             if not final_reply:
-                final_reply = "An error occurred while processing your request."
-            future = self._pending_replies.get(request_id) if request_id else None
+                final_reply = (
+                    "An error occurred while processing your request."
+                )
+            future = (
+                self._pending_replies.get(request_id)
+                if request_id
+                else None
+            )
             if future is not None and not future.done():
                 future.set_result(final_reply)
 
@@ -446,6 +459,8 @@ class NekoChannel(BaseChannel):
         )
 
         try:
+            if self._enqueue is None:
+                raise RuntimeError("Neko channel enqueue callback is not set")
             self._enqueue(payload)
 
             try:
