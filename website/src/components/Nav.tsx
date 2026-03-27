@@ -1,12 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
-import {
-  Menu,
-  X,
-  Globe,
-  Download,
-  ChevronDown,
-} from "lucide-react";
+import { Menu, X, Globe, Download, ChevronDown } from "lucide-react";
 import { CopawMascot } from "./CopawMascot";
 import { t, type Lang } from "../i18n";
 

@@ -297,18 +297,10 @@ export function ChannelDrawer({
       case "neko":
         return (
           <>
-            <Form.Item
-              name="host"
-              label="Host"
-              rules={[{ required: true }]}
-            >
+            <Form.Item name="host" label="Host" rules={[{ required: true }]}>
               <Input placeholder="127.0.0.1" />
             </Form.Item>
-            <Form.Item
-              name="port"
-              label="Port"
-              rules={[{ required: true }]}
-            >
+            <Form.Item name="port" label="Port" rules={[{ required: true }]}>
               <InputNumber
                 min={1}
                 max={65535}
