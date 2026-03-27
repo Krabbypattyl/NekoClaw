@@ -6,6 +6,7 @@ from copaw.config import utils as config_utils
 
 # pylint: disable=protected-access
 
+
 def test_normalize_working_dir_bound_paths_rewrites_legacy_root(monkeypatch):
     legacy_root = Path("~/.copaw").expanduser().resolve()
     new_root = Path("~/.copaw-dev").expanduser().resolve()

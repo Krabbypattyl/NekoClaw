@@ -113,9 +113,10 @@ class NekoChannel(BaseChannel):
         self._runner: Optional[web.AppRunner] = None
         self._site: Optional[web.TCPSite] = None
         self._pending_replies: dict[str, asyncio.Future[str]] = {}
-        self._pending_sender_replies: dict[str, deque[asyncio.Future[str]]] = (
-            {}
-        )
+        self._pending_sender_replies: dict[
+            str,
+            deque[asyncio.Future[str]],
+        ] = {}
         self._pending_reply_texts: dict[
             str,
             list[tuple[str, str | None]],
@@ -353,13 +354,9 @@ class NekoChannel(BaseChannel):
 
             final_reply = self._compose_pending_reply(request_id)
             if not final_reply:
-                final_reply = (
-                    "[NekoClaw 已完成，但没有返回可显示的文本结果]"
-                )
+                final_reply = "[NekoClaw 已完成，但没有返回可显示的文本结果]"
             future = (
-                self._pending_replies.get(request_id)
-                if request_id
-                else None
+                self._pending_replies.get(request_id) if request_id else None
             )
             if future is not None and not future.done():
                 future.set_result(final_reply)
@@ -380,9 +377,7 @@ class NekoChannel(BaseChannel):
                     "An error occurred while processing your request."
                 )
             future = (
-                self._pending_replies.get(request_id)
-                if request_id
-                else None
+                self._pending_replies.get(request_id) if request_id else None
             )
             if future is not None and not future.done():
                 future.set_result(final_reply)
